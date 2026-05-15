@@ -1,78 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blagues Carambar 🍬</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    body { overflow: hidden; }
-    .floating { animation: float 4s ease-in-out infinite; }
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
-      100% { transform: translateY(0px); }
-    }
-    .fade { animation: fadeIn 0.4s ease; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blagues Carambar 🍬</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body {
+overflow-x:hidden;
+overflow-y:auto;
+-webkit-overflow-scrolling:touch;
+}
+</style>
 </head>
+<body class="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-100 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
 
-<body class="bg-gradient-to-br from-pink-100 via-yellow-100 to-purple-100 min-h-screen flex items-center justify-center p-6">
+<div class="bg-white/80 backdrop-blur-lg rounded-[32px] shadow-2xl max-w-2xl w-full p-6 sm:p-10 text-center border-4 border-pink-200 relative z-10 my-8">
 
-  <div class="absolute top-10 left-10 text-6xl floating">🍭</div>
-  <div class="absolute bottom-10 right-10 text-6xl floating">🍬</div>
+<h1 class="text-3xl sm:text-5xl font-black text-pink-500 mb-4">
+Blagues Carambar
+</h1>
 
-  <div class="bg-white/80 backdrop-blur-lg rounded-[36px] shadow-2xl border-4 border-pink-200 max-w-2xl w-full p-10 text-center relative z-10">
-    <div class="text-7xl mb-4 floating">😂</div>
+<p class="text-gray-600 mb-8 text-base sm:text-lg">
+Clique sur le bouton pour découvrir une blague ultra drôle 🎉
+</p>
 
-    <h1 class="text-5xl font-black text-pink-500 mb-4">
-      Blagues Carambar
-    </h1>
+<div class="bg-gradient-to-r from-yellow-100 to-pink-100 rounded-3xl p-6 sm:p-8 min-h-[220px] flex items-center justify-center shadow-inner border-2 border-white">
+<p id="joke" class="text-lg sm:text-2xl font-bold text-purple-700 leading-relaxed"></p>
+</div>
 
-    <p class="text-gray-600 text-lg mb-8">
-      Clique sur le bouton pour obtenir une blague 🍬
-    </p>
+<button onclick="generateJoke()"
+class="mt-8 px-8 sm:px-10 py-4 sm:py-5 rounded-full bg-pink-400 hover:bg-pink-500 transition-all duration-300 text-white text-lg sm:text-2xl font-extrabold shadow-xl hover:scale-105 active:scale-95">
+🎲 Générer une blague
+</button>
 
-    <div class="bg-gradient-to-r from-yellow-100 to-pink-100 rounded-3xl p-8 min-h-[220px] flex items-center justify-center shadow-inner border-2 border-white">
-      <p id="joke" class="text-2xl font-bold text-purple-700 leading-relaxed fade"></p>
-    </div>
+</div>
 
-    <button
-      onclick="generateJoke()"
-      class="mt-8 px-10 py-5 rounded-full bg-pink-400 hover:bg-pink-500 transition-all duration-300 text-white text-2xl font-extrabold shadow-xl hover:scale-105 active:scale-95"
-    >
-      🎲 Générer une blague
-    </button>
-  </div>
+<script>
+const jokes = [
+"Pourquoi les plongeurs plongent-ils toujours en arrière et jamais en avant ? Parce que sinon ils tombent dans le bateau.",
+"Que dit une imprimante dans l’eau ? J’ai papier !",
+"Pourquoi les canards ont-ils autant de plumes ? Pour couvrir leur derrière.",
+"Que fait un crocodile quand il rencontre une femelle ? Il Lacoste.",
+"Pourquoi les squelettes ne se battent jamais ? Ils n’ont pas le cran.",
+"Quel est le comble pour un électricien ? Ne pas être au courant."
+];
 
-  <script>
-    const jokes = [
-      "Pourquoi les plongeurs plongent-ils toujours en arrière ? Parce que sinon ils tombent dans le bateau.",
-      "Que dit une imprimante dans l’eau ? J’ai papier !",
-      "Pourquoi les canards ont-ils autant de plumes ? Pour couvrir leur derrière.",
-      "Que fait un crocodile quand il rencontre une femelle ? Il Lacoste.",
-      "Pourquoi les squelettes ne se battent jamais ? Ils n’ont pas le cran.",
-      "Quel est le comble pour un électricien ? Ne pas être au courant.",
-      "Pourquoi les poissons détestent l’ordinateur ? À cause d’Internet.",
-      "Quel fruit adore les discussions ? La poire de dialogue.",
-      "Pourquoi les maths sont tristes ? Parce qu’elles ont trop de problèmes.",
-      "Que dit un zéro à un huit ? Belle ceinture !"
-    ];
+function generateJoke() {
+const randomIndex = Math.floor(Math.random() * jokes.length);
+document.getElementById('joke').textContent = jokes[randomIndex];
+}
 
-    function generateJoke() {
-      const jokeElement = document.getElementById("joke");
-      const randomIndex = Math.floor(Math.random() * jokes.length);
-      jokeElement.textContent = jokes[randomIndex];
-    }
-
-    generateJoke();
-  </script>
+generateJoke();
+</script>
 
 </body>
 </html>
